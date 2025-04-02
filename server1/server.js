@@ -1,7 +1,6 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
-const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const authController = require('./controllers/authController');
@@ -28,12 +27,6 @@ app.use(cors({
   credentials: true
 }));
 
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
-});
-
-app.use(limiter);
 app.use(logMiddleware);
 
 app.post('/register', (req, res) => {
