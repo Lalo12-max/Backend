@@ -38,6 +38,14 @@ app.get('/logs/stats', logController.getLogStats);
 app.get('/logs/all', logController.getAllLogs);
 app.get('/logs/distribution', logController.getRouteDistribution);
 
+
+app.get('/get-info', (req, res) => {
+  res.json({
+    nombre: 'Eduardo Alejandro Cabello Hernandez',
+    grupo: 'IDGS11'
+  });
+});
+
 const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
   console.log(`Servidor 1 corriendo en puerto ${PORT}`);
